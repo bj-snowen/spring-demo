@@ -32,5 +32,11 @@ Spring AOP配置有两种风格：
 * XML风格 = 采用声明形式实现Spring AOP
 * AspectJ风格 = 采用注解形式实现Spring AOP
 
+### Spring提供了4种实现AOP的方式：
+
+1. 经典的基于代理的AOP  示例：handProxy
+2. @AspectJ注解驱动的切面  示例：aspectjAnnotation
+3. 纯POJO切面  示例：autoAspectj
+4. 注入式AspectJ切面 示例：autoProxy
 
 @Pointcut("execution(* Sleepable.*(..))")中 最前面的\*代表函数返回值;括号中的.. 代表任意参数方法
