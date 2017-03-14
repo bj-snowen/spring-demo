@@ -31,3 +31,6 @@ Introduction(引入) org.springframework.aop.IntroductionInterceptor
 Spring AOP配置有两种风格：
 * XML风格 = 采用声明形式实现Spring AOP
 * AspectJ风格 = 采用注解形式实现Spring AOP
+
+
+@Pointcut("execution(* Sleepable.*(..))")中 最前面的\*代表函数返回值;括号中的.. 代表任意参数方法

@@ -4,17 +4,20 @@ import com.vdrips.test.aop.Human;
 import com.vdrips.test.aop.Sleepable;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.web.context.WebApplicationContext;
 
 /**
  * Created by baixf on 2017/3/14.
  */
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration("classpath:com/itheima/e_aspectj_annotation/beans.xml")
 public class Test {
 
     public static void main(String[] args){
-//        handProxy();//手动配置 aop 代理
-//        autoProxy();//手动配置aop 自动创建代理
+        handProxy();//手动配置 aop 代理
+        autoProxy();//手动配置aop 自动创建代理
         aspectjAnnotation();
-//        autoAspectj();
+        autoAspectj();
     }
 
 
