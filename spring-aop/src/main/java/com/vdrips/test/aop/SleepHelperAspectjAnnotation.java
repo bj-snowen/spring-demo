@@ -21,11 +21,11 @@ public class SleepHelperAspectjAnnotation {
 
     @Before("sleeppoint()")
     public void beforeSleep(){
-        System.out.println("aspectj aop before sleep:睡前脱衣");
+        System.out.println("aspectj Annotation aop before sleep:睡前脱衣");
     }
 
     @AfterReturning("sleeppoint()")
     public void afterReturningSleep(){
-        System.out.println("aspectj aop before sleep：睡醒起床");
+        System.out.println("aspectj Annotation aop before sleep：睡醒起床");
     }
 }

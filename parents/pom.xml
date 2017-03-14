@@ -11,5 +11,81 @@
 
     <artifactId>parents</artifactId>
 
+    <properties>
+        <!-- spring版本号 -->
+        <spring3.version>3.2.4.RELEASE</spring3.version>
+        <spring4.version>4.1.6.RELEASE</spring4.version>
+        <!-- mybatis版本号 -->
+        <mybatis.version>3.2.4</mybatis.version>
+        <!-- Log libs -->
+        <slf4j_version>1.7.2</slf4j_version>
+        <jcl_version>1.1</jcl_version>
+        <log4j_version>1.2.16</log4j_version>
+        <logback_version>1.0.6</logback_version>
+        <jcl_over_slf4j_version>1.7.7</jcl_over_slf4j_version>
+
+        <querydsl.version>4.1.0</querydsl.version>
+        <httpclient.version>4.5.1</httpclient.version>
+        <!-- Log libs -->
+        <slf4j_version>1.7.2</slf4j_version>
+        <jcl_version>1.1</jcl_version>
+        <log4j_version>1.2.16</log4j_version>
+        <logback_version>1.0.6</logback_version>
+        <jcl_over_slf4j_version>1.7.7</jcl_over_slf4j_version>
+    </properties>
+
+    <dependencies>
+        <!--spring 4-->
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring4.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring4.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring4.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>${spring4.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring4.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring4.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring4.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring4.version}</version>
+        </dependency>
+
+        <!--spring 4 end-->
+
+        <!--<dependency>-->
+            <!--<groupId>junit</groupId>-->
+            <!--<artifactId>junit</artifactId>-->
+            <!--<version>3.8.1</version>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
+    </dependencies>
 
 </project>
