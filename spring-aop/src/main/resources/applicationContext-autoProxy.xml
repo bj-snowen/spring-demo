@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- 方法2：自动配置 start-->
+    <bean id="human" class="com.vdrips.test.aop.Human"/>
+    <!--创建通知-->
+    <bean id="sleepHelper" class="com.vdrips.test.aop.SleepHelper"/>
+
+    <!--通知和切点结合起来-->
+    <bean id="sleepAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+        <property name="advice" ref="sleepHelper"/>
+        <property name="pattern" value=".*sleep"></property>
+    </bean>
+
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
+
+    <!-- 方法1：手动配置 end-->
+
+</beans>

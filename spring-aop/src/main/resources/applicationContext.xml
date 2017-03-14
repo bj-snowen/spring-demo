@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="human" class="com.vdrips.test.aop.Human"/>
+    <!--创建通知-->
+    <bean id="sleepHelper" class="com.vdrips.test.aop.SleepHelper"/>
+    <!--正则表达式 定义切点-->
+    <bean id="sleepPointCut" class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+        <property name="pattern" value=".*sleep"></property>
+    </bean>
+    <!--切点只是定义了事故发生的地点，还有故事发生的时间及内容，就是通知了-->
+
+    <!--通知和切点结合起来-->
+    <bean id="sleepHelperAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="advice" ref="sleepHelper"/>
+        <property name="pointcut" ref="sleepPointCut"/>
+    </bean>
+
+    <!--切点和通知配置完成 接下来调用ProxyFactoryBean产生代理对象-->
+    <bean id="humanProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="human"/>
+        <property name="interceptorNames" value="sleepHelperAdvisor"/>
+        <property name="proxyInterfaces" value="com.vdrips.test.aop.Sleepable"/>
+    </bean>
+
+</beans>

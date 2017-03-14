@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <aop:aspectj-autoproxy/>
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+
+    <bean id="human" class="com.vdrips.test.aop.Human"/>
+
+    <bean id="sleepHelperService" class="com.vdrips.test.aop.SleepHelperService"/>
+
+    <aop:config>
+        <aop:aspect id="sleepHelper" ref="sleepHelperService">
+            <aop:pointcut id="sleep" expression="execution(* com..Sleepable.*())" />
+            <aop:before pointcut-ref="sleep" method="dobBefore"/>
+            <aop:after pointcut-ref="sleep" method="doAfter"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
