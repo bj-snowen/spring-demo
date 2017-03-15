@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="logic" class="com.vdrips.test.ioc.LogicImpl"/>
+    <bean id="loginAction" class="com.vdrips.test.ioc.LoginAction">
+        <constructor-arg index="0" ref="logic"></constructor-arg>
+    </bean>
+    <!--使用constructor-arg来进行配置, index属性是用来表示构造方法中参数的顺序的，如果有多个参数，则按照顺序，从 0,1...来配置-->
+    <!--需要注意一点有：构造函数有多个参数的话，如：参数1，参数2，而参数2依赖于参数1，这中情况则要注意构造函数的顺序，必须将参数1放在参数2之前。-->
+</beans>

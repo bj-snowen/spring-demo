@@ -13,6 +13,7 @@
         <module>parents</module>
         <module>spring-aop</module>
         <module>spring-event</module>
+        <module>spring-ioc</module>
     </modules>
 
 

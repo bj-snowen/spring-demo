@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--Setter方法注入：-->
+    <bean id="logic" class="com.vdrips.test.ioc.LogicImpl"/>
+    <bean id="loginAction" class="com.vdrips.test.ioc.LoginAction">
+        <property name="logic" ref="logic"></property>
+    </bean>
+
+</beans>
