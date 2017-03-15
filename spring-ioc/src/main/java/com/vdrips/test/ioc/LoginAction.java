@@ -7,9 +7,10 @@ package com.vdrips.test.ioc;
 public class LoginAction {
     private ILogic logic;
 
-    public LoginAction(){
+    public LoginAction() {
 
     }
+
     public LoginAction(ILogic logic) {
         this.logic = logic;
     }
@@ -38,4 +39,5 @@ public class LoginAction {
             e.printStackTrace();
         }
     }
+
 }
