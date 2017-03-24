@@ -1,4 +1,4 @@
-## Spring MVC 多视图协商配置(json、jsp、xml、freemarker(ftl))
+# Spring MVC 多视图协商配置(json、jsp、xml、freemarker(ftl))
 
 1. spring MVC REST改如何决定采用何种方式(视图)展示内容呢？
 * 第一种：根据http request header中的Accept
