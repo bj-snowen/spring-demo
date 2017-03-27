@@ -16,6 +16,8 @@
         <module>spring-ioc</module>
         <module>spring-freemarker</module>
         <module>spring-rabbitmq</module>
+        <module>spring-mybatis</module>
+        <module>logback</module>
     </modules>
 
 
