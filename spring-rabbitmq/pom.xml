@@ -7,11 +7,18 @@
         <groupId>com.vdrips</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+
+    <packaging>war</packaging>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>spring-rabbitmq</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.vdrips</groupId>
+            <artifactId>parents</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -23,6 +30,85 @@
             <artifactId>amqp-client</artifactId>
             <version>3.6.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit</artifactId>
+            <version>1.4.5.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.7</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-web</artifactId>-->
+            <!--<version>4.1.6.RELEASE</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework</groupId>-->
+            <!--<artifactId>spring-webmvc</artifactId>-->
+            <!--<version>4.1.6.RELEASE</version>-->
+        <!--</dependency>-->
     </dependencies>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <finalName>rabbitmq_spring</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <encoding>utf8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <profiles>
+        <profile>
+            <id>nocheck</id>
+            <properties>
+                <skipTests>true</skipTests>
+                <checkstyle.skip>true</checkstyle.skip>
+                <license.skip>true</license.skip>
+                <notice.skip>true</notice.skip>
+                <versions.skip>true</versions.skip>
+            </properties>
+        </profile>
 
+        <profile>
+            <!-- 本地环境,默认是挡板，个人可以更新；其他环境配置对开发工程师无用 -->
+            <id>local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- application.properties -->
+                <p0.rabbitmq.host>127.0.0.1</p0.rabbitmq.host>
+                <p0.rabbitmq.username>guest</p0.rabbitmq.username>
+                <p0.rabbitmq.password>guest</p0.rabbitmq.password>
+                <p0.rabbitmq.port>5672</p0.rabbitmq.port>
+            </properties>
+        </profile>
+
+        <profile>
+            <!-- 测试环境 -->
+            <id>env-test</id>
+            <properties>
+                <!-- application.properties -->
+                <p0.rabbitmq.host>192.168.2.239</p0.rabbitmq.host>
+                <p0.rabbitmq.username>guest</p0.rabbitmq.username>
+                <p0.rabbitmq.password>guest</p0.rabbitmq.password>
+                <p0.rabbitmq.port>5672</p0.rabbitmq.port>
+            </properties>
+        </profile>
+    </profiles>
 </project>
