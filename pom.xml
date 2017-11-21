@@ -18,6 +18,7 @@
         <module>spring-rabbitmq</module>
         <module>spring-mybatis</module>
         <module>logback</module>
+        <module>cglib</module>
     </modules>
 
 
