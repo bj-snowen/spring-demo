@@ -13,20 +13,13 @@ import org.springframework.amqp.support.converter.MessageConversionException;
 
 public class FastJsonMessageConverter extends AbstractMessageConverter {
 
-    public
+    public static final String DEFAULT_CHARSET = "UTF-8";
 
-    static final String DEFAULT_CHARSET = "UTF-8";
-
-    private
-
-    volatile String defaultCharset = DEFAULT_CHARSET;
+    private volatile String defaultCharset = DEFAULT_CHARSET;
 
     public FastJsonMessageConverter() {
-
         super();
-
         // init();
-
     }
 
     public void setDefaultCharset(String defaultCharset) {
@@ -34,68 +27,32 @@ public class FastJsonMessageConverter extends AbstractMessageConverter {
 
     }
 
-    public Object fromMessage(Message message)
-            throws MessageConversionException {
-
+    public Object fromMessage(Message message) throws MessageConversionException {
         return null;
-
     }
 
     @SuppressWarnings("unchecked")
-
     public <T> T fromMessage(Message message, T t) {
-
         String json = "";
 
-        try
-
-        {
-
-            json = new
-
-                    String(message.getBody(), "UTF-8");
-
-        } catch
-
-                (UnsupportedEncodingException e) {
-
+        try{
+            json = new String(message.getBody(), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
-
         }
 
-        return
-
-                (T) JSON.parseObject(json, t.getClass());
-
+        return (T) JSON.parseObject(json, t.getClass());
     }
 
-    protected Message createMessage(Object objectToConvert,
-
-                                    MessageProperties messageProperties)
-
-            throws
-
-            MessageConversionException {
+    protected Message createMessage(Object objectToConvert, MessageProperties messageProperties) throws MessageConversionException {
 
         byte[] bytes = null;
-
-        try
-
-        {
-
+        try {
             String jsonString = JSON.toJSONString(objectToConvert);
-
             bytes = jsonString.getBytes(this.defaultCharset);
 
-        } catch
-
-                (UnsupportedEncodingException e) {
-
-            throw
-
-                    new MessageConversionException(
-
-                            "Failedto convert Message content", e);
+        } catch (UnsupportedEncodingException e) {
+            throw new MessageConversionException("Failedto convert Message content", e);
 
         }
 
@@ -103,17 +60,11 @@ public class FastJsonMessageConverter extends AbstractMessageConverter {
 
         messageProperties.setContentEncoding(this.defaultCharset);
 
-        if
-
-                (bytes != null) {
-
+        if (bytes != null) {
             messageProperties.setContentLength(bytes.length);
-
         }
 
-        return
-
-                new Message(bytes, messageProperties);
+        return new Message(bytes, messageProperties);
 
     }
 

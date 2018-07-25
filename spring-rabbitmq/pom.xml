@@ -92,7 +92,7 @@
             </activation>
             <properties>
                 <!-- application.properties -->
-                <p0.rabbitmq.host>127.0.0.1</p0.rabbitmq.host>
+                <p0.rabbitmq.host>47.92.28.199</p0.rabbitmq.host>
                 <p0.rabbitmq.username>guest</p0.rabbitmq.username>
                 <p0.rabbitmq.password>guest</p0.rabbitmq.password>
                 <p0.rabbitmq.port>5672</p0.rabbitmq.port>

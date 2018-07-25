@@ -19,6 +19,7 @@
         <module>spring-mybatis</module>
         <module>logback</module>
         <module>cglib</module>
+        <module>jave-learn</module>
     </modules>
 
 
